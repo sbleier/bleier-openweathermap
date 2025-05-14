@@ -1,5 +1,6 @@
 package bleier.weather;
 
+import com.andrewoid.apikeys.ApiKey;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -27,7 +28,11 @@ public class WeatherFrame extends JFrame {
     }
 
     public void display() {
-        WeatherResponse response = service.weatherNow("Edison", "0ba6a8451c8dbe36a1a0919a5810a457", "imperial").blockingGet();
+        ApiKey apiKey = new ApiKey();
+        String keyString = apiKey.get();
+
+        WeatherResponse response = service.weatherNow(
+                "Edison", keyString, "imperial").blockingGet();
         this.place.setText("Place: " + response.name);
         this.temp.setText("Temp (in imperial units): " + response.main.temp);
 
