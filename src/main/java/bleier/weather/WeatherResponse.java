@@ -1,6 +1,6 @@
 package bleier.weather;
 
 public class WeatherResponse {
-    Main main;
-    String name;
+    public Main main;
+    public String name;
 }
